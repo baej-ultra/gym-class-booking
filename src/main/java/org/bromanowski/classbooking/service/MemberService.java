@@ -18,6 +18,5 @@ public interface MemberService {
 
     void deleteById(int id);
 
-
     Set<ScheduleEntry> getEvents(int id);
 }

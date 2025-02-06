@@ -2,6 +2,7 @@ package org.bromanowski.classbooking.rest;
 
 import org.bromanowski.classbooking.entity.Member;
 import org.bromanowski.classbooking.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,7 @@ public class MemberController {
 
     MemberService memberService;
 
+    @Autowired
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
     }
@@ -41,8 +43,8 @@ public class MemberController {
     }
 
     @DeleteMapping("/{id}")
-    ResponseEntity<String> deleteMember(@PathVariable int id) {
+    ResponseEntity<Void> deleteMember(@PathVariable int id) {
         memberService.deleteById(id);
-        return ResponseEntity.ok("Deleted user with id " + id);
+        return ResponseEntity.noContent().build();
     }
 }

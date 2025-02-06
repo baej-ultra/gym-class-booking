@@ -1,22 +1,21 @@
-package org.bromanowski.classbooking.exception;
+package org.bromanowski.classbooking.exception.handler;
 
-import org.bromanowski.classbooking.exception.response.MemberErrorResponse;
+import org.bromanowski.classbooking.exception.EntityNotFoundException;
+import org.bromanowski.classbooking.exception.response.StandardErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class MemberRestExceptionHandler {
+public class RestExceptionHandler {
 
     @ExceptionHandler
-    public ResponseEntity<MemberErrorResponse> handleException(MemberNotFoundException exception) {
-
-        MemberErrorResponse response = new MemberErrorResponse();
+    public ResponseEntity<StandardErrorResponse> handleException(EntityNotFoundException exception) {
+        StandardErrorResponse response = new StandardErrorResponse();
         response.setStatus(HttpStatus.NOT_FOUND.value());
         response.setMessage(exception.getMessage());
         response.setTimestamp(System.currentTimeMillis());
-
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 }

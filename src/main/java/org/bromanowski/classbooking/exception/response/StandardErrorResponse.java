@@ -1,15 +1,15 @@
 package org.bromanowski.classbooking.exception.response;
 
-public class MemberErrorResponse {
+public class StandardErrorResponse {
 
     private int status;
     private String message;
     private long timestamp;
 
-    public MemberErrorResponse() {
+    public StandardErrorResponse() {
     }
 
-    public MemberErrorResponse(int status, String message, long timestamp) {
+    public StandardErrorResponse(int status, String message, long timestamp) {
         this.status = status;
         this.message = message;
         this.timestamp = timestamp;
