@@ -1,6 +1,6 @@
 package org.bromanowski.classbooking.service;
 
-import org.bromanowski.classbooking.entity.Event;
+import org.bromanowski.classbooking.entity.ScheduleEntry;
 import org.bromanowski.classbooking.entity.Member;
 import org.bromanowski.classbooking.exception.MemberNotFoundException;
 import org.bromanowski.classbooking.repository.MemberRepository;
@@ -54,7 +54,7 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public Set<Event> getEvents(int id) {
+    public Set<ScheduleEntry> getEvents(int id) {
         //TODO when EventRepository
         return null;
     }

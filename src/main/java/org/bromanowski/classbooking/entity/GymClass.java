@@ -7,7 +7,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "classes", schema = "class_booking")
-public class Class {
+public class GymClass {
     @Id
     @Column(name = "id_class", nullable = false)
     private Integer id;

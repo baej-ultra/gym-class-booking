@@ -15,7 +15,7 @@ public class MemberEvent {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_event", nullable = false)
-    private Event idEvent;
+    private ScheduleEntry idScheduleEntry;
 
     public Integer getId() {
         return id;
@@ -33,12 +33,12 @@ public class MemberEvent {
         this.idMember = idMember;
     }
 
-    public Event getIdEvent() {
-        return idEvent;
+    public ScheduleEntry getIdEvent() {
+        return idScheduleEntry;
     }
 
-    public void setIdEvent(Event idEvent) {
-        this.idEvent = idEvent;
+    public void setIdEvent(ScheduleEntry idScheduleEntry) {
+        this.idScheduleEntry = idScheduleEntry;
     }
 
 }

@@ -1,6 +1,6 @@
 package org.bromanowski.classbooking.service;
 
-import org.bromanowski.classbooking.entity.Event;
+import org.bromanowski.classbooking.entity.ScheduleEntry;
 import org.bromanowski.classbooking.entity.Member;
 
 import java.util.List;
@@ -19,5 +19,5 @@ public interface MemberService {
     void deleteById(int id);
 
 
-    Set<Event> getEvents(int id);
+    Set<ScheduleEntry> getEvents(int id);
 }

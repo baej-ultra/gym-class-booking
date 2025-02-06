@@ -6,7 +6,7 @@ import java.time.Instant;
 
 @Entity
 @Table(name = "schedule", schema = "class_booking")
-public class Event {
+public class ScheduleEntry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_event", nullable = false)
@@ -14,7 +14,7 @@ public class Event {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_class", nullable = false)
-    private Class idClass;
+    private GymClass idGymClass;
 
     @Column(name = "start_time", nullable = false)
     private Instant startTime;
@@ -34,12 +34,12 @@ public class Event {
         this.id = id;
     }
 
-    public Class getIdClass() {
-        return idClass;
+    public GymClass getIdClass() {
+        return idGymClass;
     }
 
-    public void setIdClass(Class idClass) {
-        this.idClass = idClass;
+    public void setIdClass(GymClass idGymClass) {
+        this.idGymClass = idGymClass;
     }
 
     public Instant getStartTime() {
