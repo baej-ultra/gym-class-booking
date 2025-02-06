@@ -2,6 +2,7 @@ package org.bromanowski.classbooking.service;
 
 import org.bromanowski.classbooking.entity.ScheduleEntry;
 import org.bromanowski.classbooking.entity.Member;
+import org.bromanowski.classbooking.exception.EmailExistsException;
 import org.bromanowski.classbooking.exception.EntityNotFoundException;
 import org.bromanowski.classbooking.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,18 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
+    public Member findByEmail(String email) {
+        var memberOptional =  memberRepository.findMemberByEmail(email);
+        return memberOptional.orElseThrow(() ->
+                new EntityNotFoundException("Member not found for email " + email));
+    }
+
+    @Override
     public Member addMember(Member member) {
+        String email = member.getEmail();
+        if (memberRepository.existsByEmail(email)) {
+            throw new EmailExistsException("Email %s already in database".formatted(email));
+        }
         member.setId(null);
         return memberRepository.save(member);
     }

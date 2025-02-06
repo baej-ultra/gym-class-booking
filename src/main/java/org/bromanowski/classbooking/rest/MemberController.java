@@ -1,5 +1,6 @@
 package org.bromanowski.classbooking.rest;
 
+import jakarta.validation.Valid;
 import org.bromanowski.classbooking.entity.Member;
 import org.bromanowski.classbooking.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,16 +25,21 @@ public class MemberController {
         return ResponseEntity.ok(memberService.findAll());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     ResponseEntity<Member> getMemberById(@PathVariable int id) {
         return ResponseEntity.ok(memberService.findById(id));
+    }
+
+    @GetMapping("/email/{email}")
+    ResponseEntity<Member> getMemberByEmail(@PathVariable String email) {
+        return ResponseEntity.ok(memberService.findByEmail(email));
     }
 
     //TODO GET for all events for current member
     // - filer by date
 
     @PostMapping
-    ResponseEntity<Member> addMember(@RequestBody Member member) {
+    ResponseEntity<Member> addMember(@Valid @RequestBody Member member) {
         return ResponseEntity.ok(memberService.addMember(member));
     }
 

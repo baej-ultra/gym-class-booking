@@ -1,6 +1,8 @@
 package org.bromanowski.classbooking.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "members", schema = "class_booking")
@@ -16,7 +18,9 @@ public class Member {
     @Column(name = "last_name", length = 45)
     private String lastName;
 
-    @Column(name = "email", length = 45)
+    @Column(name = "email", length = 45, unique = true)
+    @Email(message = "Invalid email format. Please provide a valid email address.")
+    @NotEmpty(message = "E-mail cannot be empty")
     private String email;
 
     public Integer getId() {

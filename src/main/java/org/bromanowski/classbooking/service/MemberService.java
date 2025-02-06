@@ -12,6 +12,8 @@ public interface MemberService {
 
     Member findById(int id);
 
+    Member findByEmail(String email);
+
     Member addMember(Member member);
 
     Member editMember(int id, Member member);
