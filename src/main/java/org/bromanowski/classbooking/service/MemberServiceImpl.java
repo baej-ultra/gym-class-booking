@@ -2,11 +2,10 @@ package org.bromanowski.classbooking.service;
 
 import org.bromanowski.classbooking.entity.Event;
 import org.bromanowski.classbooking.entity.Member;
+import org.bromanowski.classbooking.exception.MemberNotFoundException;
 import org.bromanowski.classbooking.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Set;
@@ -30,7 +29,7 @@ public class MemberServiceImpl implements MemberService{
     public Member findById(int id) {
         var memberOptional = memberRepository.findById(id);
         return memberOptional.orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.NOT_FOUND, "Member not found for id " + id));
+                new MemberNotFoundException("Member not found for id " + id));
     }
 
     @Override
@@ -42,7 +41,7 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public Member editMember(int id, Member member) {
         memberRepository.findById(id).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.NOT_FOUND, "Member not found for id " + id));
+                new MemberNotFoundException("Member not found for id " + id));
         member.setId(id);
         return memberRepository.save(member);
     }
@@ -50,7 +49,7 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public void deleteById(int id) {
         memberRepository.findById(id).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.NOT_FOUND, "Member not found for id " + id));
+                new MemberNotFoundException("Member not found for id " + id));
         memberRepository.deleteById(id);
     }
 

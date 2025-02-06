@@ -2,6 +2,7 @@ package org.bromanowski.classbooking.rest;
 
 import org.bromanowski.classbooking.entity.Member;
 import org.bromanowski.classbooking.service.MemberService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,28 +18,31 @@ public class MemberController {
     }
 
     @GetMapping
-    List<Member> getAllMembers() {
-        return memberService.findAll();
+    ResponseEntity<List<Member>> getAllMembers() {
+        return ResponseEntity.ok(memberService.findAll());
     }
 
     @GetMapping("/{id}")
-    Member getMemberById(@PathVariable int id) {
-        return memberService.findById(id);
+    ResponseEntity<Member> getMemberById(@PathVariable int id) {
+        return ResponseEntity.ok(memberService.findById(id));
     }
 
+    //TODO GET for all events for current member
+    // - filer by date
+
     @PostMapping
-    Member addMember(@RequestBody Member member) {
-        return memberService.addMember(member);
+    ResponseEntity<Member> addMember(@RequestBody Member member) {
+        return ResponseEntity.ok(memberService.addMember(member));
     }
 
     @PutMapping("/{id}")
-    Member editMember(@PathVariable int id, @RequestBody Member member) {
-        return memberService.editMember(id, member);
+    ResponseEntity<Member> editMember(@PathVariable int id, @RequestBody Member member) {
+        return ResponseEntity.ok(memberService.editMember(id, member));
     }
 
     @DeleteMapping("/{id}")
-    String deleteMember(@PathVariable int id) {
+    ResponseEntity<String> deleteMember(@PathVariable int id) {
         memberService.deleteById(id);
-        return "Deleted user with id " + id;
+        return ResponseEntity.ok("Deleted user with id " + id);
     }
 }

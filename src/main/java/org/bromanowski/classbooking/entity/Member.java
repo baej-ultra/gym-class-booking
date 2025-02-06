@@ -1,10 +1,6 @@
 package org.bromanowski.classbooking.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "members", schema = "class_booking")
@@ -22,18 +18,6 @@ public class Member {
 
     @Column(name = "email", length = 45)
     private String email;
-
-    @ManyToMany(mappedBy = "members")
-    private Set<Event> events = new LinkedHashSet<>();
-
-    @JsonIgnore
-    public Set<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(Set<Event> events) {
-        this.events = events;
-    }
 
     public Integer getId() {
         return id;

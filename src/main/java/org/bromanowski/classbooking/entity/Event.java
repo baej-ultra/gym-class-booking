@@ -3,8 +3,6 @@ package org.bromanowski.classbooking.entity;
 import jakarta.persistence.*;
 
 import java.time.Instant;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "schedule", schema = "class_booking")
@@ -27,12 +25,6 @@ public class Event {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_instructor")
     private Instructor idInstructor;
-
-    @ManyToMany
-    @JoinTable(name = "member_event",
-            joinColumns = @JoinColumn(name = "id_event"),
-            inverseJoinColumns = @JoinColumn(name = "id_member"))
-    private Set<Member> members = new LinkedHashSet<>();
 
     public Integer getId() {
         return id;
@@ -72,14 +64,6 @@ public class Event {
 
     public void setIdInstructor(Instructor idInstructor) {
         this.idInstructor = idInstructor;
-    }
-
-    public Set<Member> getMembers() {
-        return members;
-    }
-
-    public void setMembers(Set<Member> members) {
-        this.members = members;
     }
 
 }
