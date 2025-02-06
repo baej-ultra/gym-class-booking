@@ -1,0 +1,10 @@
+# Gym class booking app
+This is very much still work in progress. Main goal of this app is to manage a gym scheduling for a local gym.
+
+The goal of this project is to solidify the knowledge and skills I have acquired during my Java learning, as well as to set new challenges for myself.
+
+**Core features**
+- Class, member, instructor management
+- Scheduling classes
+- Admin/manager/member roles
+- ...
