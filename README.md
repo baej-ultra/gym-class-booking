@@ -8,3 +8,14 @@ The goal of this project is to solidify the knowledge and skills I have acquired
 - Scheduling classes
 - Admin/manager/member roles
 - ...
+
+**What I want to learn with this project**
+- JWT implementation in Spring
+  - Authorization and token generation
+  - Authentication
+  - Token refreshing
+- Unit tests
+  - Service tests (no matter how simple tested methods are)
+  - Validation tests
+- Docker
+- Anything that comes to mind during development
