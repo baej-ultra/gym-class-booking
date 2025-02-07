@@ -2,8 +2,8 @@ package org.bromanowski.classbooking.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "members", schema = "class_booking")
@@ -14,11 +14,11 @@ public class Member {
     @Column(name = "id_member", nullable = false)
     private Integer id;
 
-    @Min(value = 2, message = "First name has to be at least 2 characters")
+    @Length(min = 2, message = "First name has to be at least 2 characters")
     @Column(name = "first_name", length = 45)
     private String firstName;
 
-    @Min(value = 2, message = "Last name has to be at least 2 characters")
+    @Length(min = 2, message = "Last name has to be at least 2 characters")
     @Column(name = "last_name", length = 45)
     private String lastName;
 
@@ -26,6 +26,16 @@ public class Member {
     @NotEmpty(message = "E-mail cannot be empty")
     @Column(name = "email", length = 45, unique = true)
     private String email;
+
+    public Member() {
+    }
+
+    public Member(Integer id, String firstName, String lastName, String email) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
 
     public Integer getId() {
         return id;
