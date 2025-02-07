@@ -32,20 +32,23 @@ public class MemberController {
 
     @GetMapping("/email/{email}")
     ResponseEntity<Member> getMemberByEmail(@PathVariable String email) {
-        return ResponseEntity.ok(memberService.findByEmail(email));
+        Member member = memberService.findByEmail(email);
+        return ResponseEntity.ok(member);
     }
 
     //TODO GET for all events for current member
     // - filer by date
 
     @PostMapping
-    ResponseEntity<Member> addMember(@Valid @RequestBody Member member) {
-        return ResponseEntity.ok(memberService.addMember(member));
+    ResponseEntity<Member> addMember(@RequestBody @Valid Member member) {
+        Member newMember = memberService.addMember(member);
+        return ResponseEntity.ok(newMember);
     }
 
-    @PutMapping("/{id}")
-    ResponseEntity<Member> editMember(@PathVariable int id, @RequestBody Member member) {
-        return ResponseEntity.ok(memberService.editMember(id, member));
+    @PutMapping("id/{id}")
+    ResponseEntity<Member> editMember(@PathVariable int id, @RequestBody @Valid Member member) {
+        Member editedMember = memberService.addMember(member);
+        return ResponseEntity.ok(editedMember);
     }
 
     @DeleteMapping("/{id}")

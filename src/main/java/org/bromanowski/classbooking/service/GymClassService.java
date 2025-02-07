@@ -1,7 +1,6 @@
 package org.bromanowski.classbooking.service;
 
 import org.bromanowski.classbooking.entity.GymClass;
-import org.bromanowski.classbooking.entity.Member;
 
 import java.util.List;
 
@@ -11,9 +10,11 @@ public interface GymClassService {
 
     GymClass findById(int id);
 
-    GymClass addMember(Member member);
+    GymClass findByClassName(String gymClassname);
 
-    GymClass editMember(int id, Member member);
+    GymClass addGymClass(GymClass gymClass);
+
+    GymClass editGymClass(int id, GymClass gymClass);
 
     void deleteById(int id);
 }

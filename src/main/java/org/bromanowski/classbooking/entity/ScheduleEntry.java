@@ -7,6 +7,7 @@ import java.time.Instant;
 @Entity
 @Table(name = "schedule", schema = "class_booking")
 public class ScheduleEntry {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_event", nullable = false)

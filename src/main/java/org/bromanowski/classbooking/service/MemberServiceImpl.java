@@ -1,9 +1,9 @@
 package org.bromanowski.classbooking.service;
 
-import org.bromanowski.classbooking.entity.ScheduleEntry;
+import jakarta.persistence.EntityNotFoundException;
 import org.bromanowski.classbooking.entity.Member;
+import org.bromanowski.classbooking.entity.ScheduleEntry;
 import org.bromanowski.classbooking.exception.EmailExistsException;
-import org.bromanowski.classbooking.exception.EntityNotFoundException;
 import org.bromanowski.classbooking.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class MemberServiceImpl implements MemberService{
+public class MemberServiceImpl implements MemberService {
 
     MemberRepository memberRepository;
 
@@ -35,7 +35,7 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public Member findByEmail(String email) {
-        var memberOptional =  memberRepository.findMemberByEmail(email);
+        var memberOptional = memberRepository.findMemberByEmail(email);
         return memberOptional.orElseThrow(() ->
                 new EntityNotFoundException("Member not found for email " + email));
     }
@@ -52,16 +52,14 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public Member editMember(int id, Member member) {
-        memberRepository.findById(id).orElseThrow(() ->
-                new EntityNotFoundException("Member not found for id " + id));
+        checkIfExistsById(id);
         member.setId(id);
         return memberRepository.save(member);
     }
 
     @Override
     public void deleteById(int id) {
-        memberRepository.findById(id).orElseThrow(() ->
-                new EntityNotFoundException("Member not found for id " + id));
+        checkIfExistsById(id);
         memberRepository.deleteById(id);
     }
 
@@ -69,5 +67,11 @@ public class MemberServiceImpl implements MemberService{
     public Set<ScheduleEntry> getEvents(int id) {
         //TODO when EventRepository
         return null;
+    }
+
+    private void checkIfExistsById(int id) {
+        if (!memberRepository.existsById(id)) {
+            throw new EntityNotFoundException("Member not found for id " + id);
+        }
     }
 }

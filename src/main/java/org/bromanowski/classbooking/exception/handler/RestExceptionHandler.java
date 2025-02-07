@@ -1,7 +1,7 @@
 package org.bromanowski.classbooking.exception.handler;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.bromanowski.classbooking.exception.EmailExistsException;
-import org.bromanowski.classbooking.exception.EntityNotFoundException;
 import org.bromanowski.classbooking.exception.response.StandardErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

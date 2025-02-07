@@ -5,8 +5,10 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "member_event", schema = "class_booking")
 public class MemberEvent {
+
     @Id
-    @Column(name = "id_membereven", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_memberevent", nullable = false)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

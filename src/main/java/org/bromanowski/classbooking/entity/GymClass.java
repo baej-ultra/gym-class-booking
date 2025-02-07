@@ -1,17 +1,18 @@
 package org.bromanowski.classbooking.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "classes", schema = "class_booking")
 public class GymClass {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_class", nullable = false)
     private Integer id;
 
+    @NotEmpty(message = "Class name can't be empty")
     @Column(name = "class_name", length = 45)
     private String className;
 
