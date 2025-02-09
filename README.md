@@ -17,5 +17,6 @@ The goal of this project is to solidify the knowledge and skills I have acquired
 - Unit tests
   - Service tests (no matter how simple tested methods are)
   - Validation tests
+- Integration tests using testcontainers and/or H2 database
 - Docker
 - Anything that comes to mind during development
