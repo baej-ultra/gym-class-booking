@@ -1,7 +1,7 @@
 package org.bromanowski.classbooking.service;
 
 import jakarta.persistence.EntityNotFoundException;
-import org.bromanowski.classbooking.entity.Instructor;
+import org.bromanowski.classbooking.model.Instructor;
 import org.bromanowski.classbooking.repository.InstructorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class InstructorServiceImpl implements InstructorService {
 
-    InstructorRepository instructorRepository;
+    private final InstructorRepository instructorRepository;
 
     @Autowired
     public InstructorServiceImpl(InstructorRepository instructorRepository) {

@@ -1,4 +1,4 @@
-package org.bromanowski.classbooking.entity;
+package org.bromanowski.classbooking.model;
 
 import jakarta.persistence.*;
 
@@ -11,13 +11,13 @@ public class MemberEvent {
     @Column(name = "id_memberevent", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "id_member", nullable = false)
-    private Member idMember;
+    private Member member;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "id_event", nullable = false)
-    private ScheduleEntry idScheduleEntry;
+    private ScheduleEntry scheduleEntry;
 
     public Integer getId() {
         return id;
@@ -27,20 +27,20 @@ public class MemberEvent {
         this.id = id;
     }
 
-    public Member getIdMember() {
-        return idMember;
+    public Member getMember() {
+        return member;
     }
 
-    public void setIdMember(Member idMember) {
-        this.idMember = idMember;
+    public void setMember(Member idMember) {
+        this.member = idMember;
     }
 
     public ScheduleEntry getIdEvent() {
-        return idScheduleEntry;
+        return scheduleEntry;
     }
 
     public void setIdEvent(ScheduleEntry idScheduleEntry) {
-        this.idScheduleEntry = idScheduleEntry;
+        this.scheduleEntry = idScheduleEntry;
     }
 
 }

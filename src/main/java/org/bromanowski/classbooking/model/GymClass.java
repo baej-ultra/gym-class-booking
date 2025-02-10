@@ -1,4 +1,4 @@
-package org.bromanowski.classbooking.entity;
+package org.bromanowski.classbooking.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;

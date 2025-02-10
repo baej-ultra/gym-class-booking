@@ -1,4 +1,4 @@
-package org.bromanowski.classbooking.entity;
+package org.bromanowski.classbooking.model;
 
 import jakarta.persistence.*;
 
@@ -13,9 +13,9 @@ public class ScheduleEntry {
     @Column(name = "id_event", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "id_class", nullable = false)
-    private GymClass idGymClass;
+    private GymClass gymClass;
 
     @Column(name = "start_time", nullable = false)
     private Instant startTime;
@@ -23,9 +23,9 @@ public class ScheduleEntry {
     @Column(name = "duration", nullable = false)
     private Integer duration;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "id_instructor")
-    private Instructor idInstructor;
+    private Instructor instructor;
 
     public Integer getId() {
         return id;
@@ -35,12 +35,12 @@ public class ScheduleEntry {
         this.id = id;
     }
 
-    public GymClass getIdClass() {
-        return idGymClass;
+    public GymClass getGymClass() {
+        return gymClass;
     }
 
-    public void setIdClass(GymClass idGymClass) {
-        this.idGymClass = idGymClass;
+    public void setGymClass(GymClass gymClass) {
+        this.gymClass = gymClass;
     }
 
     public Instant getStartTime() {
@@ -59,12 +59,12 @@ public class ScheduleEntry {
         this.duration = duration;
     }
 
-    public Instructor getIdInstructor() {
-        return idInstructor;
+    public Instructor getInstructor() {
+        return instructor;
     }
 
-    public void setIdInstructor(Instructor idInstructor) {
-        this.idInstructor = idInstructor;
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
     }
 
 }

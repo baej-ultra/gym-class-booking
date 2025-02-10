@@ -1,7 +1,7 @@
 package org.bromanowski.classbooking.service;
 
 import jakarta.persistence.EntityNotFoundException;
-import org.bromanowski.classbooking.entity.GymClass;
+import org.bromanowski.classbooking.model.GymClass;
 import org.bromanowski.classbooking.repository.GymClassRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class GymClassServiceImpl implements GymClassService {
 
-    GymClassRepository gymClassRepository;
+    private final GymClassRepository gymClassRepository;
     
     @Autowired
     public GymClassServiceImpl(GymClassRepository gymClassRepository) {

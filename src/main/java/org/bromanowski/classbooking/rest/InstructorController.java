@@ -1,7 +1,7 @@
 package org.bromanowski.classbooking.rest;
 
 import jakarta.validation.Valid;
-import org.bromanowski.classbooking.entity.Instructor;
+import org.bromanowski.classbooking.model.Instructor;
 import org.bromanowski.classbooking.service.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/instructors")
 public class InstructorController {
 
-    InstructorService instructorService;
+    private final InstructorService instructorService;
 
     @Autowired
     public InstructorController(InstructorService instructorService) {

@@ -1,20 +1,19 @@
 package org.bromanowski.classbooking.service;
 
 import jakarta.persistence.EntityNotFoundException;
-import org.bromanowski.classbooking.entity.Member;
-import org.bromanowski.classbooking.entity.ScheduleEntry;
+import org.bromanowski.classbooking.model.Member;
+import org.bromanowski.classbooking.model.ScheduleEntry;
 import org.bromanowski.classbooking.exception.EmailExistsException;
 import org.bromanowski.classbooking.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class MemberServiceImpl implements MemberService {
 
-    MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
     @Autowired
     public MemberServiceImpl(MemberRepository memberRepository) {
@@ -64,9 +63,8 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Set<ScheduleEntry> getEvents(int id) {
-        //TODO when EventRepository
-        return null;
+    public List<ScheduleEntry> getEvents(int id, int week) {
+        return memberRepository.findEventsByWeekForMember(id, week);
     }
 
     private void checkIfExistsById(int id) {

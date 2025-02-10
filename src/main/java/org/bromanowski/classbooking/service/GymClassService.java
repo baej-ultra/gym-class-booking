@@ -1,6 +1,6 @@
 package org.bromanowski.classbooking.service;
 
-import org.bromanowski.classbooking.entity.GymClass;
+import org.bromanowski.classbooking.model.GymClass;
 
 import java.util.List;
 

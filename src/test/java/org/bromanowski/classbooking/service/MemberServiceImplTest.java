@@ -1,7 +1,7 @@
 package org.bromanowski.classbooking.service;
 
 import jakarta.persistence.EntityNotFoundException;
-import org.bromanowski.classbooking.entity.Member;
+import org.bromanowski.classbooking.model.Member;
 import org.bromanowski.classbooking.exception.EmailExistsException;
 import org.bromanowski.classbooking.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
