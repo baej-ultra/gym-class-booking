@@ -1,9 +1,9 @@
 package org.bromanowski.classbooking.service;
 
 import jakarta.persistence.EntityNotFoundException;
-import org.bromanowski.classbooking.mapper.MemberMapper;
+import org.bromanowski.classbooking.model.mapper.MemberMapper;
 import org.bromanowski.classbooking.model.Member;
-import org.bromanowski.classbooking.model.MemberDto;
+import org.bromanowski.classbooking.model.dto.MemberDto;
 import org.bromanowski.classbooking.model.ScheduleEntry;
 import org.bromanowski.classbooking.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;

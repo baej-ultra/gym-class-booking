@@ -63,10 +63,10 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/token").authenticated()
+                        .requestMatchers("/auth/**").authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
-                .securityMatcher("/token")
+                .securityMatcher("/auth/**")
                 .build();
     }
 

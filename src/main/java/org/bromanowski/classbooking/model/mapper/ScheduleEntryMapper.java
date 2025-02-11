@@ -1,9 +1,9 @@
-package org.bromanowski.classbooking.mapper;
+package org.bromanowski.classbooking.model.mapper;
 
 import org.bromanowski.classbooking.model.GymClass;
 import org.bromanowski.classbooking.model.Instructor;
 import org.bromanowski.classbooking.model.ScheduleEntry;
-import org.bromanowski.classbooking.model.ScheduleEntryDto;
+import org.bromanowski.classbooking.model.dto.ScheduleEntryDto;
 import org.bromanowski.classbooking.service.GymClassService;
 import org.bromanowski.classbooking.service.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;

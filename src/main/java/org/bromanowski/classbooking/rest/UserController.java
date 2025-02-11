@@ -1,7 +1,7 @@
 package org.bromanowski.classbooking.rest;
 
 import jakarta.validation.Valid;
-import org.bromanowski.classbooking.model.NewUserDto;
+import org.bromanowski.classbooking.model.dto.NewUserDto;
 import org.bromanowski.classbooking.model.User;
 import org.bromanowski.classbooking.service.UserService;
 import org.springframework.http.ResponseEntity;

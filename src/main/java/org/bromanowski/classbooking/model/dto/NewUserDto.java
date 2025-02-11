@@ -1,4 +1,4 @@
-package org.bromanowski.classbooking.model;
+package org.bromanowski.classbooking.model.dto;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

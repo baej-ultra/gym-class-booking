@@ -3,7 +3,7 @@ package org.bromanowski.classbooking.service;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.bromanowski.classbooking.model.Member;
-import org.bromanowski.classbooking.model.NewUserDto;
+import org.bromanowski.classbooking.model.dto.NewUserDto;
 import org.bromanowski.classbooking.model.User;
 import org.bromanowski.classbooking.repository.MemberRepository;
 import org.bromanowski.classbooking.repository.UserRepository;
@@ -41,18 +41,16 @@ public class UserServiceImpl implements UserService {
         User user = new User();
         user.setUsername(newUser.username());
         user.setPassword(newUser.password());
-        user.setId(null);
         User savedUser = userRepository.save(user);
 
         Member member = new Member();
-        member.setId(savedUser.getId());
         member.setFirstName(newUser.firstName());
         member.setLastName(newUser.lastName());
         member.setEmail(newUser.email());
+        member.setUser(user);
+        Member savedMember = memberRepository.save(member);
 
-        memberRepository.save(member);
-        savedUser.setMember(member);
-
+        savedUser.setMember(savedMember);
         return savedUser;
     }
 

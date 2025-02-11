@@ -2,7 +2,7 @@ package org.bromanowski.classbooking.rest;
 
 import jakarta.validation.Valid;
 import org.bromanowski.classbooking.model.ScheduleEntry;
-import org.bromanowski.classbooking.model.ScheduleEntryDto;
+import org.bromanowski.classbooking.model.dto.ScheduleEntryDto;
 import org.bromanowski.classbooking.service.ScheduleEntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

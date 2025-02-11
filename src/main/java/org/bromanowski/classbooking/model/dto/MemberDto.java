@@ -1,4 +1,4 @@
-package org.bromanowski.classbooking.model;
+package org.bromanowski.classbooking.model.dto;
 
 public record MemberDto(
 

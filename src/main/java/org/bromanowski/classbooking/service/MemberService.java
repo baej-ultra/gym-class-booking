@@ -1,6 +1,6 @@
 package org.bromanowski.classbooking.service;
 
-import org.bromanowski.classbooking.model.MemberDto;
+import org.bromanowski.classbooking.model.dto.MemberDto;
 import org.bromanowski.classbooking.model.ScheduleEntry;
 
 import java.util.List;

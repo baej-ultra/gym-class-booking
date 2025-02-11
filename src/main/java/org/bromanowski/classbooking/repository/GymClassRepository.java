@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface GymClassRepository extends JpaRepository<GymClass, Integer> {
 
     Optional<GymClass> findByClassName(String className);
+
+    Integer id(Integer id);
 }

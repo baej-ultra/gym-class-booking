@@ -11,12 +11,19 @@ The goal of this project is to solidify the knowledge and skills I have acquired
 
 **What I want to learn with this project**
 - JWT implementation in Spring
-  - Authorization and token generation
-  - Authentication
+  - ✅Authorization and token generation
+  - ✅Authentication
   - Token refreshing
 - Unit tests
-  - Service tests (no matter how simple tested methods are)
+  - ✅Service tests (no matter how simple tested methods are)
   - Validation tests
 - Integration tests using testcontainers and/or H2 database
 - Docker
 - Anything that comes to mind during development
+
+**What new things did I learn so far**
+- mapStruct
+- Symmetrical and asymmetrical encryption
+- configuring SecurityFilterChain
+- What JWT claims are
+- 

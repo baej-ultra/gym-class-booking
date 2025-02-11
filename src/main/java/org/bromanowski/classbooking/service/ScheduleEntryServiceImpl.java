@@ -1,8 +1,8 @@
 package org.bromanowski.classbooking.service;
 
 import org.bromanowski.classbooking.model.ScheduleEntry;
-import org.bromanowski.classbooking.model.ScheduleEntryDto;
-import org.bromanowski.classbooking.mapper.ScheduleEntryMapper;
+import org.bromanowski.classbooking.model.dto.ScheduleEntryDto;
+import org.bromanowski.classbooking.model.mapper.ScheduleEntryMapper;
 import org.bromanowski.classbooking.repository.ScheduleEntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

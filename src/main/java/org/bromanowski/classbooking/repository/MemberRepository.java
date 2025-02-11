@@ -17,10 +17,10 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
 
     @Query("""
             SELECT se FROM ScheduleEntry se
-            JOIN MemberEvent me ON se.id = me.scheduleEntry.id
-            WHERE me.member.id = :memberId
+            JOIN UserEvent ue ON se.id = ue.event.id
+            WHERE ue.user.id = :userId
             AND WEEK(se.startTime) = :week""")
-    List<ScheduleEntry> findEventsByWeekForMember(@Param("memberId") int memberId,
+    List<ScheduleEntry> findEventsByWeekForMember(@Param("userId") int userId,
                                                   @Param("week") int week);
 
 }

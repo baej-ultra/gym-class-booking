@@ -1,6 +1,6 @@
 package org.bromanowski.classbooking.rest;
 
-import org.bromanowski.classbooking.model.MemberDto;
+import org.bromanowski.classbooking.model.dto.MemberDto;
 import org.bromanowski.classbooking.model.ScheduleEntry;
 import org.bromanowski.classbooking.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;

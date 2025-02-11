@@ -12,7 +12,6 @@ import java.util.List;
 public class GymClassServiceImpl implements GymClassService {
 
     private final GymClassRepository gymClassRepository;
-    
     @Autowired
     public GymClassServiceImpl(GymClassRepository gymClassRepository) {
         this.gymClassRepository = gymClassRepository;
