@@ -21,7 +21,7 @@ The goal of this project is to solidify the knowledge and skills I have acquired
 - Docker
 - Anything that comes to mind during development
 
-**What new things I've learnt so far**
+**New things I've learnt so far**
 - mapStruct
 - Symmetrical and asymmetrical encryption
 - configuring SecurityFilterChain
