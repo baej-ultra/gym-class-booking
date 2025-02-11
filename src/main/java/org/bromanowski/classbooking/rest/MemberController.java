@@ -1,7 +1,6 @@
 package org.bromanowski.classbooking.rest;
 
-import jakarta.validation.Valid;
-import org.bromanowski.classbooking.model.Member;
+import org.bromanowski.classbooking.model.MemberDto;
 import org.bromanowski.classbooking.model.ScheduleEntry;
 import org.bromanowski.classbooking.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,19 +24,19 @@ public class MemberController {
     }
 
     @GetMapping
-    ResponseEntity<List<Member>> getAllMembers() {
+    ResponseEntity<List<MemberDto>> getAllMembers() {
         return ResponseEntity.ok(memberService.findAll());
     }
 
     @GetMapping("/id/{id}")
-    ResponseEntity<Member> getMemberById(@PathVariable int id) {
+    ResponseEntity<MemberDto> getMemberById(@PathVariable int id) {
         return ResponseEntity.ok(memberService.findById(id));
     }
 
     @GetMapping("/email/{email}")
-    ResponseEntity<Member> getMemberByEmail(@PathVariable String email) {
-        Member member = memberService.findByEmail(email);
-        return ResponseEntity.ok(member);
+    ResponseEntity<MemberDto> getMemberByEmail(@PathVariable String email) {
+        MemberDto memberDto = memberService.findByEmail(email);
+        return ResponseEntity.ok(memberDto);
     }
 
     @GetMapping("/{id}/schedule")
@@ -52,21 +51,21 @@ public class MemberController {
         return ResponseEntity.ok(events);
     }
 
-    @PostMapping
-    ResponseEntity<Member> addMember(@RequestBody @Valid Member member) {
-        Member newMember = memberService.addMember(member);
-        return ResponseEntity.ok(newMember);
-    }
+//    @PostMapping
+//    ResponseEntity<Member> addMember(@RequestBody @Valid Member member) {
+//        Member newMember = memberService.addMember(member);
+//        return ResponseEntity.ok(newMember);
+//    }
 
-    @PutMapping("id/{id}")
-    ResponseEntity<Member> editMember(@PathVariable int id, @RequestBody @Valid Member member) {
-        Member editedMember = memberService.addMember(member);
-        return ResponseEntity.ok(editedMember);
-    }
+//    @PutMapping("id/{id}")
+//    ResponseEntity<Member> editMember(@PathVariable int id, @RequestBody @Valid Member member) {
+//        Member editedMember = memberService.addMember(member);
+//        return ResponseEntity.ok(editedMember);
+//    }
 
-    @DeleteMapping("/{id}")
-    ResponseEntity<Void> deleteMember(@PathVariable int id) {
-        memberService.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
+//    @DeleteMapping("/{id}")
+//    ResponseEntity<Void> deleteMember(@PathVariable int id) {
+//        memberService.deleteById(id);
+//        return ResponseEntity.noContent().build();
+//    }
 }

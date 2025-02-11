@@ -1,5 +1,6 @@
 package org.bromanowski.classbooking.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -10,8 +11,7 @@ import org.hibernate.validator.constraints.Length;
 public class Member {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_member", nullable = false)
+    @Column(name = "user_id", nullable = false)
     private Integer id;
 
     @Length(min = 2, message = "First name has to be at least 2 characters")
@@ -26,6 +26,12 @@ public class Member {
     @NotEmpty(message = "E-mail cannot be empty")
     @Column(name = "email", length = 45, unique = true)
     private String email;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    @MapsId
+    @JsonIgnore
+    private User user;
 
     public Member() {
     }
@@ -69,4 +75,11 @@ public class Member {
         this.email = email;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
