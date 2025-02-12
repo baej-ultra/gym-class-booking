@@ -27,6 +27,9 @@ public class ScheduleEntry {
     @JoinColumn(name = "id_instructor")
     private Instructor instructor;
 
+    @Column(name = "capacity")
+    private Integer capacity;
+
     public Integer getId() {
         return id;
     }
@@ -65,6 +68,14 @@ public class ScheduleEntry {
 
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
+    }
+
+    public Integer getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Integer capacity) {
+        this.capacity = capacity;
     }
 
 }

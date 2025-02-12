@@ -1,4 +1,4 @@
-package org.bromanowski.classbooking.service;
+package org.bromanowski.classbooking.service.gymclass;
 
 import org.bromanowski.classbooking.model.GymClass;
 

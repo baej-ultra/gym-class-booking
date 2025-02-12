@@ -1,4 +1,4 @@
-package org.bromanowski.classbooking.service;
+package org.bromanowski.classbooking.service.signup;
 
 import org.bromanowski.classbooking.UserEvent;
 

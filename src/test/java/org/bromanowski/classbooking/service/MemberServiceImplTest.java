@@ -1,6 +1,7 @@
 package org.bromanowski.classbooking.service;
 
 import org.bromanowski.classbooking.repository.MemberRepository;
+import org.bromanowski.classbooking.service.member.MemberServiceImpl;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;

@@ -2,7 +2,7 @@ package org.bromanowski.classbooking.rest;
 
 import jakarta.validation.Valid;
 import org.bromanowski.classbooking.model.Instructor;
-import org.bromanowski.classbooking.service.InstructorService;
+import org.bromanowski.classbooking.service.instructor.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +38,7 @@ public class InstructorController {
     }
 
     @PutMapping("/{id}")
-    ResponseEntity<Instructor> editInstrucotrById(@PathVariable int id, @RequestBody @Valid Instructor instructor) {
+    ResponseEntity<Instructor> editInstructorById(@PathVariable int id, @RequestBody @Valid Instructor instructor) {
         Instructor editedInstructor = instructorService.editInstructor(id, instructor);
         return ResponseEntity.ok(editedInstructor);
     }

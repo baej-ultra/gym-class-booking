@@ -13,7 +13,6 @@ The goal of this project is to solidify the knowledge and skills I have acquired
 - JWT implementation in Spring
   - ✅Authorization and token generation
   - ✅Authentication
-  - Token refreshing
 - Unit tests
   - ✅Service tests (no matter how simple tested methods are)
   - Validation tests
@@ -26,4 +25,3 @@ The goal of this project is to solidify the knowledge and skills I have acquired
 - Symmetrical and asymmetrical encryption
 - configuring SecurityFilterChain
 - What JWT claims are
-- 

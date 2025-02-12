@@ -1,5 +1,6 @@
-package org.bromanowski.classbooking.service;
+package org.bromanowski.classbooking.service.schedule;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.bromanowski.classbooking.model.ScheduleEntry;
 import org.bromanowski.classbooking.model.dto.ScheduleEntryDto;
 import org.bromanowski.classbooking.model.mapper.ScheduleEntryMapper;
@@ -48,4 +49,26 @@ public class ScheduleEntryServiceImpl implements ScheduleEntryService {
         ScheduleEntry se = scheduleEntryMapper.mapToEntity(scheduleEntryDto);
         return scheduleEntryRepository.save(se);
     }
+
+    @Override
+    public ScheduleEntry editScheduleEntry(int id, ScheduleEntryDto scheduleEntryDto) {
+        checkIfExistsById(id);
+        ScheduleEntry se = scheduleEntryMapper.mapToEntity(scheduleEntryDto);
+        se.setId(id);
+        return scheduleEntryRepository.save(se);
+
+    }
+
+    @Override
+    public void deleteScheduleEntry(int id) {
+        checkIfExistsById(id);
+        scheduleEntryRepository.deleteById(id);
+    }
+
+    private void checkIfExistsById(int id) {
+        if (!scheduleEntryRepository.existsById(id)) {
+            throw new EntityNotFoundException("Schedule entry not found for id " + id);
+        }
+    }
 }
+

@@ -1,4 +1,4 @@
-package org.bromanowski.classbooking.service;
+package org.bromanowski.classbooking.service.member;
 
 import org.bromanowski.classbooking.model.dto.MemberDto;
 import org.bromanowski.classbooking.model.ScheduleEntry;
@@ -15,6 +15,8 @@ public interface MemberService {
 
 //    Member editMember(int id, Member member);
 
-    List<ScheduleEntry> getEvents(int id, int week);
+    List<ScheduleEntry> getEventsByWeek(int id, int week);
+
+    List<ScheduleEntry> getAllEvents(int id);
 
 }

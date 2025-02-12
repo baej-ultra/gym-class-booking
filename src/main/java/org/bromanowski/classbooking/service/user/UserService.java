@@ -1,4 +1,4 @@
-package org.bromanowski.classbooking.service;
+package org.bromanowski.classbooking.service.user;
 
 import org.bromanowski.classbooking.model.Member;
 import org.bromanowski.classbooking.model.dto.NewUserDto;
@@ -12,11 +12,13 @@ public interface UserService {
 
     User findById(int id);
 
+    User findByUsername(String username);
+
     User addUser(NewUserDto newUser);
 
     Member editUserDetails(int id, Member details);
 
-    User changeUserPassword(int id, String password);
+    void changeUserPassword(int id, String password);
 
     void deleteUserById(int id);
 }

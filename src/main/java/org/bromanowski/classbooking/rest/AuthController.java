@@ -1,6 +1,6 @@
 package org.bromanowski.classbooking.rest;
 
-import org.bromanowski.classbooking.service.TokenService;
+import org.bromanowski.classbooking.service.token.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -3,6 +3,7 @@ package org.bromanowski.classbooking.service;
 import jakarta.persistence.EntityNotFoundException;
 import org.bromanowski.classbooking.model.GymClass;
 import org.bromanowski.classbooking.repository.GymClassRepository;
+import org.bromanowski.classbooking.service.gymclass.GymClassServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

@@ -11,4 +11,6 @@ public interface UserEventRepository extends JpaRepository<UserEvent, Integer> {
     List<UserEvent> findByEvent_IdAndUser_Id(Integer eventId, Integer userId);
 
     Optional<UserEvent> findByEvent_IdAndUser_Username(Integer eventId, String userUsername);
+
+    int countUserEventsByEvent_Id(Integer eventId);
 }

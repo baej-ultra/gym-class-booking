@@ -23,4 +23,10 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
     List<ScheduleEntry> findEventsByWeekForMember(@Param("userId") int userId,
                                                   @Param("week") int week);
 
+    @Query("""
+            SELECT se FROM ScheduleEntry se
+            JOIN UserEvent ue ON se.id = ue.event.id
+            WHERE ue.user.id = :userId""")
+    List<ScheduleEntry> findEventsForMember(@Param("userId") int userId);
+
 }

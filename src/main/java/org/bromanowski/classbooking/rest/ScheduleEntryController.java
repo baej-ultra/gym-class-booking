@@ -3,9 +3,10 @@ package org.bromanowski.classbooking.rest;
 import jakarta.validation.Valid;
 import org.bromanowski.classbooking.model.ScheduleEntry;
 import org.bromanowski.classbooking.model.dto.ScheduleEntryDto;
-import org.bromanowski.classbooking.service.ScheduleEntryService;
+import org.bromanowski.classbooking.service.schedule.ScheduleEntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,7 +41,14 @@ public class ScheduleEntryController {
         }
     }
 
+    @PutMapping("/id/{id}")
+    ResponseEntity<ScheduleEntry> editScheduleEntry(@PathVariable int id, @RequestBody ScheduleEntryDto scheduleEntryDto) {
+        ScheduleEntry se = scheduleEntryService.editScheduleEntry(id, scheduleEntryDto);
+        return ResponseEntity.ok(se);
+    }
+
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     ResponseEntity<ScheduleEntry> addEntry(@RequestBody @Valid ScheduleEntryDto scheduleEntryDto) {
         ScheduleEntry newScheduleEntry = scheduleEntryService.addScheduleEntry(scheduleEntryDto);
         return ResponseEntity.ok(newScheduleEntry);

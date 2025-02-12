@@ -1,4 +1,4 @@
-package org.bromanowski.classbooking.service;
+package org.bromanowski.classbooking.service.member;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.bromanowski.classbooking.model.mapper.MemberMapper;
@@ -72,8 +72,13 @@ public class MemberServiceImpl implements MemberService {
 //    }
 
     @Override
-    public List<ScheduleEntry> getEvents(int id, int week) {
+    public List<ScheduleEntry> getEventsByWeek(int id, int week) {
         return memberRepository.findEventsByWeekForMember(id, week);
+    }
+
+    @Override
+    public List<ScheduleEntry> getAllEvents(int id) {
+        return memberRepository.findEventsForMember(id);
     }
 
     private void checkIfExistsById(int id) {

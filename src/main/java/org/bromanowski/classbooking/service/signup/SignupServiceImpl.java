@@ -1,4 +1,4 @@
-package org.bromanowski.classbooking.service;
+package org.bromanowski.classbooking.service.signup;
 
 
 import jakarta.persistence.EntityNotFoundException;
@@ -29,8 +29,16 @@ public class SignupServiceImpl implements SignupService{
     public UserEvent signUpForEvent(int eventId, String username) {
         ScheduleEntry event = scheduleEntryRepository.findById(eventId).orElseThrow(() ->
                 new EntityNotFoundException("Event not found for id: " + eventId));
-        User user = userRepository.findByUsername(username);
+        int maxCapacity = event.getCapacity();
+        int spotsTaken = userEventRepository.countUserEventsByEvent_Id(eventId);
+        String className = event.getClass().getName();
 
+        if (maxCapacity < spotsTaken + 1) {
+            throw new RuntimeException("Event %s at max capacity (%d). No spots available".formatted(className, maxCapacity));
+        }
+
+        User user = userRepository.findByUsername(username).orElseThrow(() ->
+                new EntityNotFoundException("User not found for username: " + username));
         UserEvent ue = new UserEvent();
         ue.setUser(user);
         ue.setEvent(event);

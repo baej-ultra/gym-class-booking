@@ -1,4 +1,4 @@
-package org.bromanowski.classbooking.service;
+package org.bromanowski.classbooking.service.instructor;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.bromanowski.classbooking.model.Instructor;

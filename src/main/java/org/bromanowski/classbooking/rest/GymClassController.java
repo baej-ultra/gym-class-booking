@@ -2,7 +2,7 @@ package org.bromanowski.classbooking.rest;
 
 import jakarta.validation.Valid;
 import org.bromanowski.classbooking.model.GymClass;
-import org.bromanowski.classbooking.service.GymClassService;
+import org.bromanowski.classbooking.service.gymclass.GymClassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

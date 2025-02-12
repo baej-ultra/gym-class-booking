@@ -1,8 +1,8 @@
 package org.bromanowski.classbooking.rest;
 
-import org.bromanowski.classbooking.model.dto.MemberDto;
 import org.bromanowski.classbooking.model.ScheduleEntry;
-import org.bromanowski.classbooking.service.MemberService;
+import org.bromanowski.classbooking.model.dto.MemberDto;
+import org.bromanowski.classbooking.service.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -42,12 +42,13 @@ public class MemberController {
     @GetMapping("/{id}/schedule")
     ResponseEntity<List<ScheduleEntry>> getEventsForMember(@PathVariable int id,
                                                            @RequestParam(value = "week", required = false) Integer week) {
+        // Get current week if not specified
         if (week == null) {
             LocalDate localDate = LocalDate.now();
             WeekFields weekFields = WeekFields.of(Locale.getDefault());
             week = localDate.get(weekFields.weekOfYear());
         }
-        List<ScheduleEntry> events = memberService.getEvents(id, week);
+        List<ScheduleEntry> events = memberService.getEventsByWeek(id, week);
         return ResponseEntity.ok(events);
     }
 
