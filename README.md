@@ -1,5 +1,5 @@
 # Gym class booking app
-This is very much still work in progress, but It's more-less in the intended shape and runnable (still working on containerizing). Main goal of this app is to manage a gym scheduling for a local gym.
+This is very much still work in progress, but It's more-less in the intended shape and runnable. Main goal of this app is to manage a gym scheduling for a local gym.
 
 The goal of this project is to solidify the knowledge and skills I have acquired during my Java learning, as well as to set new challenges for myself.
 
@@ -17,7 +17,7 @@ The goal of this project is to solidify the knowledge and skills I have acquired
   - ✅Service tests (no matter how simple tested methods are)
   - ✅Validation tests
 - Integration tests using testcontainers and/or H2 database
-- Docker
+- ✅Docker
 - Anything that comes to mind during development
 
 **New things I've learnt so far**
@@ -28,3 +28,4 @@ The goal of this project is to solidify the knowledge and skills I have acquired
 - Mockito
 - MockMvc for web layer with application context
 - BDD
+- Creating basic Dockerfile and docker-compose for Spring Boot
