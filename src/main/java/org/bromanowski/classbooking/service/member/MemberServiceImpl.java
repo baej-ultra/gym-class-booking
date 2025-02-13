@@ -47,30 +47,6 @@ public class MemberServiceImpl implements MemberService {
         return memberMapper.toDto(member);
     }
 
-//    @Override
-//    public Member addMember(Member member) {
-//        String email = member.getUsername();
-//        if (memberRepository.existsByEmail(email)) {
-//            throw new EmailExistsException("Email %s already in database".formatted(email));
-//        }
-//        member.setId(null);
-//        return memberRepository.save(member);
-//    }
-
-//    @Override
-//    public Member editMember(int id, MemberDto memberDto) {
-//        checkIfExistsById(id);
-//        Member member = memberMapper.toEntity(memberDto);
-//        member.setId(id);
-//        return memberRepository.save(member);
-//    }
-
-//    @Override
-//    public void deleteById(int id) {
-//        checkIfExistsById(id);
-//        memberRepository.deleteById(id);
-//    }
-
     @Override
     public List<ScheduleEntry> getEventsByWeek(int id, int week) {
         return memberRepository.findEventsByWeekForMember(id, week);

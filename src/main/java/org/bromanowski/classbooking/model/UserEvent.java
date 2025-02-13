@@ -1,9 +1,7 @@
-package org.bromanowski.classbooking;
+package org.bromanowski.classbooking.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import org.bromanowski.classbooking.model.ScheduleEntry;
-import org.bromanowski.classbooking.model.User;
 
 @Entity
 @Table(name = "user_event")

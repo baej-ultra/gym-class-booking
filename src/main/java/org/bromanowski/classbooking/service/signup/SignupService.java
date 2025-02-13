@@ -1,6 +1,6 @@
 package org.bromanowski.classbooking.service.signup;
 
-import org.bromanowski.classbooking.UserEvent;
+import org.bromanowski.classbooking.model.UserEvent;
 
 public interface SignupService {
 

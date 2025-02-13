@@ -22,7 +22,6 @@ public class ScheduleEntryMapper {
     }
 
     public ScheduleEntry mapToEntity(ScheduleEntryDto scheduleEntryDTO){
-
         GymClass gymClass = gymClassService.findById(scheduleEntryDTO.gymClassId());
         Instructor instructor = instructorService.findById(scheduleEntryDTO.instructorId());
 
@@ -31,6 +30,7 @@ public class ScheduleEntryMapper {
         se.setInstructor(instructor);
         se.setDuration(scheduleEntryDTO.duration());
         se.setStartTime(scheduleEntryDTO.startTime());
+        se.setDuration(scheduleEntryDTO.duration());
         se.setId(null);
 
         return se;

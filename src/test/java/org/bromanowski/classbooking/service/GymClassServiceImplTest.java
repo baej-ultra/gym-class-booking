@@ -21,7 +21,6 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class GymClassServiceImplTest {
 
-
     @Mock
     GymClassRepository gymClassRepository;
 
@@ -29,7 +28,7 @@ class GymClassServiceImplTest {
     GymClassServiceImpl gymClassService;
 
     @Test
-    void findAllShouldReturnAllClasses() {
+    public void findAll_shouldReturnAllClasses() {
         GymClass class1 = new GymClass();
         GymClass class2 = new GymClass();
         List<GymClass> classes = List.of(class1, class2);
@@ -41,10 +40,11 @@ class GymClassServiceImplTest {
         assertEquals(2, result.size());
         assertEquals(result.get(0), classes.get(0));
         assertEquals(result.get(1), classes.get(1));
+        verify(gymClassRepository).findAll();
     }
 
     @Test
-    void findByIdShouldReturnWhenIdExists() {
+    public void findById_shouldReturn_whenIdExists() {
         int id = 1;
         GymClass gymClass = new GymClass();
         gymClass.setId(id);
@@ -54,21 +54,22 @@ class GymClassServiceImplTest {
         GymClass result = gymClassService.findById(id);
 
         assertEquals(result, gymClass);
+        verify(gymClassRepository).findById(id);
     }
 
     @Test
-    void findByIdShouldThrowExceptionWhenIdDoesNotExist() {
+    public void findById_shouldThrowException_whenIdDoesNotExist() {
         int id = 1;
         when(gymClassRepository.findById(id)).thenReturn(Optional.empty());
 
         assertThrows(EntityNotFoundException.class, () ->
                 gymClassService.findById(id));
+        verify(gymClassRepository).findById(id);
     }
 
     @Test
-    void findByNameShouldReturnWhenNameExists() {
+    public void findByName_shouldReturn_whenNameExists() {
         String name = "Class name";
-
         GymClass gymClass = new GymClass();
         gymClass.setClassName(name);
 
@@ -80,7 +81,7 @@ class GymClassServiceImplTest {
     }
 
     @Test
-    void findByNameShouldThrowExceptionWhenNameDoesNotExist() {
+    public void findByName_shouldThrowException_whenNameDoesNotExist() {
         String name = "Class name";
 
         GymClass gymClass = new GymClass();
@@ -93,7 +94,7 @@ class GymClassServiceImplTest {
     }
 
     @Test
-    void editGymClassShouldReturnWhenIdIsFound() {
+    public void editGymClass_shouldReturn_whenIdIsFound() {
         int id = 1;
 
         GymClass gymClass = new GymClass();
@@ -109,7 +110,7 @@ class GymClassServiceImplTest {
     }
 
     @Test
-    void editGymClassShouldThrowExceptionWhenIdIsNotFound() {
+    public void editGymClass_shouldThrowException_whenIdIsNotFound() {
         int id = 1;
         when(gymClassRepository.existsById(1)).thenReturn(false);
 
@@ -118,7 +119,7 @@ class GymClassServiceImplTest {
     }
 
     @Test
-    void deleteGymClassShouldReturnWhenIdIsFound() {
+    public void deleteGymClass_shouldReturn_whenIdIsFound() {
         int id = 1;
         when(gymClassRepository.existsById(id)).thenReturn(true);
 
@@ -128,7 +129,7 @@ class GymClassServiceImplTest {
     }
 
     @Test
-    void deleteGymClassShouldThrowExceptionWhenIdIsNotFound() {
+    public void deleteGymClass_shouldThrowException_whenIdIsNotFound() {
         int id = 1;
         when(gymClassRepository.existsById(id)).thenReturn(false);
 

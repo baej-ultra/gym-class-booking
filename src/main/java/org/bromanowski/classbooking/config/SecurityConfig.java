@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -31,6 +32,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfig {
 
     private final RsaKeyProperties rsaKeys;
@@ -39,41 +41,13 @@ public class SecurityConfig {
         this.rsaKeys = rsaKeys;
     }
 
-//    @Bean
-//    InMemoryUserDetailsManager user() {
-//        UserDetails john = User.builder()
-//                .username("member")
-//                .password("{noop}member")
-//                .roles("MEMBER")
-//                .build();
-//
-//        UserDetails mary = User.builder()
-//                .username("manager")
-//                .password("{noop}manager")
-//                .roles("MANAGER")
-//                .build();
-//
-//        UserDetails susan = User.builder()
-//                .username("admin")
-//                .password("{noop}admin")
-//                .roles("ADMIN")
-//                .build();
-//
-//        return new InMemoryUserDetailsManager(john, mary, susan);
-//    }
-
-
-
     @Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource) {
-
         JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
 
-        // define query to retrieve a user by username
         jdbcUserDetailsManager.setUsersByUsernameQuery(
                 "select username, password, enabled from users where username=?");
 
-        // define query to retrieve the authorities/roles by username
         jdbcUserDetailsManager.setAuthoritiesByUsernameQuery(
                 "select username, authority from authorities where username=?");
 
@@ -83,7 +57,6 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-       // return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
     @Bean
@@ -107,8 +80,13 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.DELETE, "/api/signup").authenticated()
                         .requestMatchers(HttpMethod.DELETE, "/api/**").hasRole("ADMIN")
-                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/api/classes", "/api/members").hasAnyRole("MANAGER", "ADMIN")
+                        .requestMatchers("/api/admin/**", "/api/admin").hasRole("ADMIN")
+                        .requestMatchers("/api/classes",
+                                "/api/classes/**",
+                                "/api/members",
+                                "/api/members/**",
+                                "/api/instructors",
+                                "/api/instructors/**").hasAnyRole("MANAGER", "ADMIN")
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 ->

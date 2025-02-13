@@ -1,6 +1,5 @@
 package org.bromanowski.classbooking.rest;
 
-import org.bromanowski.classbooking.UserEvent;
 import org.bromanowski.classbooking.service.signup.SignupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,11 +19,11 @@ public class SignupController {
     }
 
     @PostMapping
-    ResponseEntity<UserEvent> signUpForEvent(@AuthenticationPrincipal Jwt jwt,
+    ResponseEntity<String> signUpForEvent(@AuthenticationPrincipal Jwt jwt,
                                              @RequestParam(name = "event") Integer eventId) {
         String username = jwt.getSubject();
-        UserEvent ue = signupService.signUpForEvent(eventId, username);
-        return ResponseEntity.ok(ue);
+        signupService.signUpForEvent(eventId, username);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping

@@ -2,9 +2,11 @@ package org.bromanowski.classbooking.service.signup;
 
 
 import jakarta.persistence.EntityNotFoundException;
-import org.bromanowski.classbooking.UserEvent;
+import org.bromanowski.classbooking.exception.AlreadySignedUpException;
+import org.bromanowski.classbooking.exception.EventIsFullException;
 import org.bromanowski.classbooking.model.ScheduleEntry;
 import org.bromanowski.classbooking.model.User;
+import org.bromanowski.classbooking.model.UserEvent;
 import org.bromanowski.classbooking.repository.ScheduleEntryRepository;
 import org.bromanowski.classbooking.repository.UserEventRepository;
 import org.bromanowski.classbooking.repository.UserRepository;
@@ -34,7 +36,11 @@ public class SignupServiceImpl implements SignupService{
         String className = event.getClass().getName();
 
         if (maxCapacity < spotsTaken + 1) {
-            throw new RuntimeException("Event %s at max capacity (%d). No spots available".formatted(className, maxCapacity));
+            throw new EventIsFullException("Event %s at max capacity (%d). No spots available".formatted(className, maxCapacity));
+        }
+
+        if (userEventRepository.existsByEvent_IdAndUser_Username(eventId, username)) {
+            throw new AlreadySignedUpException("User already signed up for this class.");
         }
 
         User user = userRepository.findByUsername(username).orElseThrow(() ->
